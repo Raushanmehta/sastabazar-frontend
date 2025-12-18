@@ -1,8 +1,9 @@
 
-import { Box, Button, Modal } from '@mui/material'
+import { Box, Button, FormControlLabel, Modal, Radio, RadioGroup } from '@mui/material'
 import { useState } from 'react';
 import AddressCard from './AddressCard';
 import AddressForm from './AddressForm';
+import PricingCart from '../cart/PricingCart';
 
 
 
@@ -11,14 +12,26 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: 450,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
+    borderRadius: '10px',
     boxShadow: 24,
-    pt: 2,
-    px: 4,
-    pb: 3,
+    p: 4,
+
 };
+
+const paymentGatwayList = () => [
+    {
+        value: "RAZORPAY",
+        image: "https://upload.wikimedia.org/wikipedia/commons/8/89/Razorpay_logo.svg",
+        lable: "Razorpay"
+    },
+    {
+        value: "STRIPE",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Stripe_Logo%2C_revised_2016.svg/2560px-Stripe_Logo%2C_revised_2016.svg.png",
+        lable: "Stripe"
+    }
+]
 
 
 
@@ -28,6 +41,11 @@ const Checkout = () => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const [paymentGateway, setPaymentGateway] = useState("RAZORPAY");
+
+    const handlePaymentChange = (event) => {
+        setPaymentGateway(event.target.value);
+    }
 
 
     return (
@@ -51,7 +69,7 @@ const Checkout = () => {
 
                             <p>Save Address</p>
                             <div className='space-y-3'>
-                                {[1,].map((item ) => (
+                                {[1,].map((item) => (
                                     <AddressCard />
                                 ))}
                             </div>
@@ -60,10 +78,60 @@ const Checkout = () => {
 
                         <div className='py-4 px-5 rounded-md border border-gray-200'>
                             <Button onClick={handleOpen}>
-                                Add New Address 
+                                Add New Address
                             </Button>
                         </div>
 
+                    </div>
+
+                    <div className='space-y-2'>
+
+                        <div className="border border-gray-200 p-2">
+  <h1 className="flex justify-center text-cyan-500 font-medium text-sm py-2">
+    Select Payment Gateway
+  </h1>
+
+  <RadioGroup
+    row
+    name="radio-buttons-group"
+    className="flex gap-3"
+    onChange={handlePaymentChange}
+    value={paymentGateway}
+  >
+    {paymentGatwayList().map((item) => (
+      <FormControlLabel
+        key={item.value}
+        value={item.value}
+        control={<Radio />}
+        className="border rounded-md border-gray-200 w-[48%] m-0 px-2 py-1"
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          margin: 0,
+        }}
+        label={
+          <img
+            src={item.image}
+            alt={item.label}
+            className={item.value === "RAZORPAY" ? "w-20" : "w-12"}
+          />
+        }
+      />
+    ))}
+  </RadioGroup>
+</div>
+
+
+                        <div className='border border-gray-200  rounded-b-md'>
+
+                            <PricingCart />
+                            <div className='p-5 '>
+                                <Button variant='contained' sx={{ width: "100%" }} size='large'>
+                                    Checkout
+                                </Button>
+                            </div>
+
+                        </div>
                     </div>
 
                 </div>
@@ -77,7 +145,7 @@ const Checkout = () => {
                 aria-describedby="parent-modal-description"
             >
                 <Box sx={style}>
-                    <AddressForm/>
+                    <AddressForm />
                 </Box>
             </Modal>
 

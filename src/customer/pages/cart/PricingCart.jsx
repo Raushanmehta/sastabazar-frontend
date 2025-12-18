@@ -9,28 +9,22 @@ const PricingCart = () => {
       <div className='flex justify-between items-center'>
         <span>Subtotal</span>
         <span>₹ 999</span>
-
       </div>
 
       <div className='flex justify-between items-center'>
         <span>Discount</span>
         <span>₹ 399</span>
-
       </div>
 
       <div className='flex justify-between items-center'>
         <span>Shipping</span>
         <span>₹ 39</span>
-
       </div>
 
       <div className='flex justify-between items-center'>
         <span>Platfrom Fee</span>
         <span className="text-cyan-500">Free</span>
-
       </div>
-      
-
       
     </div>
     <Divider />
