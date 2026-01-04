@@ -4,12 +4,8 @@ import * as Yup from "yup";
 
 const AddressFormSchema = Yup.object({
   name: Yup.string().required("Name is required"),
-  mobile: Yup.string()
-    .required("Mobile is required")
-    .matches(/^[6-9]\d{9}$/, "Invalid mobile number"),
-  pincode: Yup.string()
-    .required("Pincode is required")
-    .matches(/^[1-9][0-9]{5}$/, "Invalid pincode"),
+  mobile: Yup.string().required("Mobile is required").matches(/^[6-9]\d{9}$/, "Invalid mobile number"),
+  pincode: Yup.string().required("Pincode is required").matches(/^[1-9][0-9]{5}$/, "Invalid pincode"),
   address: Yup.string().required("Address is required"),
   locality: Yup.string().required("Locality is required"),
   city: Yup.string().required("City is required"),

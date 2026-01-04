@@ -69,7 +69,7 @@ const Checkout = () => {
 
                             <p>Save Address</p>
                             <div className='space-y-3'>
-                                {[1,].map((item) => (
+                                {[1].map((item) => (
                                     <AddressCard />
                                 ))}
                             </div>
@@ -87,39 +87,39 @@ const Checkout = () => {
                     <div className='space-y-2'>
 
                         <div className="border border-gray-200 p-2">
-  <h1 className="flex justify-center text-cyan-500 font-medium text-sm py-2">
-    Select Payment Gateway
-  </h1>
+                            <h1 className="flex justify-center text-cyan-500 font-medium text-sm py-2">
+                                Select Payment Gateway
+                            </h1>
 
-  <RadioGroup
-    row
-    name="radio-buttons-group"
-    className="flex gap-3"
-    onChange={handlePaymentChange}
-    value={paymentGateway}
-  >
-    {paymentGatwayList().map((item) => (
-      <FormControlLabel
-        key={item.value}
-        value={item.value}
-        control={<Radio />}
-        className="border rounded-md border-gray-200 w-[48%] m-0 px-2 py-1"
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          margin: 0,
-        }}
-        label={
-          <img
-            src={item.image}
-            alt={item.label}
-            className={item.value === "RAZORPAY" ? "w-20" : "w-12"}
-          />
-        }
-      />
-    ))}
-  </RadioGroup>
-</div>
+                            <RadioGroup
+                                row
+                                name="radio-buttons-group"
+                                className="flex gap-3"
+                                onChange={handlePaymentChange}
+                                value={paymentGateway}
+                            >
+                                {paymentGatwayList().map((item) => (
+                                    <FormControlLabel
+                                        key={item.value}
+                                        value={item.value}
+                                        control={<Radio />}
+                                        className="border rounded-md border-gray-200 w-[48%] m-0 px-2 py-1"
+                                        sx={{
+                                            display: "flex",
+                                            justifyContent: "space-between",
+                                            margin: 0,
+                                        }}
+                                        label={
+                                            <img
+                                                src={item.image}
+                                                alt={item.label}
+                                                className={item.value === "RAZORPAY" ? "w-20" : "w-12"}
+                                            />
+                                        }
+                                    />
+                                ))}
+                            </RadioGroup>
+                        </div>
 
 
                         <div className='border border-gray-200  rounded-b-md'>
