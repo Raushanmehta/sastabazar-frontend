@@ -86,11 +86,12 @@ const SellerAccountForm = () => {
 
                 <div className=''>
                     {
-                    activeStep == 0 ? <SellerFormStep1 formik={formik} /> : 
-                    activeStep == 1 ? <SellerFormStep2 formik={formik} /> : 
-                    activeStep == 2 ? <SellerFormStep3 formik={formik} /> : 
-                    activeStep == 3 ? <SellerFormStep4 formik={formik} /> : ""
-                    }
+                        activeStep == 0 ? (<SellerFormStep1 formik={formik} />) :
+                            activeStep == 1 ? (<SellerFormStep2 formik={formik} />) :
+                                activeStep == 2 ? (<SellerFormStep3 formik={formik} />) :
+                                    (<SellerFormStep4 formik={formik} />
+
+                                    )}
                 </div>
 
 

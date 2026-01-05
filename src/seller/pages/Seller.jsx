@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import SellerAccountForm from './SellerAccountForm'
-import SellerLoginForm from './SellerLoginForm'
+
 import { Button } from '@mui/material';
+import SellerAccountForm from '../form/SellerAccountForm';
+import SellerLoginForm from '../form/SellerLoginForm';
 
 const Seller = () => {
 
