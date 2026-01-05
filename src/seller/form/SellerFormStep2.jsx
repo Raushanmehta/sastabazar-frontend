@@ -1,5 +1,4 @@
-import { Box, Button, Grid, TextField } from "@mui/material";
-import { useFormik } from "formik";
+import { Box, Grid, TextField } from "@mui/material";
 import * as Yup from "yup";
 
 const AddressFormSchema = Yup.object({
@@ -12,29 +11,12 @@ const AddressFormSchema = Yup.object({
   state: Yup.string().required("State is required"),
 });
 
-const AddressForm = () => {
-  const formik = useFormik({
-    initialValues: {
-      name: "",
-      mobile: "",
-      pincode: "",
-      address: "",
-      locality: "",
-      city: "",
-      state: "",
-    },
-    validationSchema: AddressFormSchema,
-    onSubmit: (values) => {
-      console.log(values);
-    },
-  });
+const SellerFormStep2 = ({ formik }) => {
+  
 
   return (
     <Box sx={{ max: "auto" }} >
-      <h1 className="text-center text-2xl font-bold pb-5">
-        Contact Details
-      </h1>
-
+      
       <form onSubmit={formik.handleSubmit}>
         <Grid container spacing={2}>
 
@@ -44,7 +26,6 @@ const AddressForm = () => {
               name="name"
               label="Name"
               fullWidth
-              variant="outlined"
               value={formik.values.name}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -59,7 +40,6 @@ const AddressForm = () => {
               name="mobile"
               label="Mobile"
               fullWidth
-              variant="outlined"
               value={formik.values.mobile}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -73,7 +53,6 @@ const AddressForm = () => {
               name="pincode"
               label="Pincode"
               fullWidth
-               variant="outlined"
               value={formik.values.pincode}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -88,7 +67,6 @@ const AddressForm = () => {
               name="address"
               label="Address"
               fullWidth
-              variant="outlined"
               value={formik.values.address}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -103,7 +81,6 @@ const AddressForm = () => {
               name="locality"
               label="Locality"
               fullWidth
-              variant="outlined"
               value={formik.values.locality}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -118,7 +95,6 @@ const AddressForm = () => {
               name="city"
               label="City"
               fullWidth
-              variant="outlined"
               value={formik.values.city}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -132,7 +108,6 @@ const AddressForm = () => {
               name="state"
               label="State"
               fullWidth
-              variant="outlined"
               value={formik.values.state}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -141,21 +116,9 @@ const AddressForm = () => {
             />
           </Grid>
         </Grid>
-
-        {/* Button - Full Row */}
-        <Grid width={{ xs: "auto" }}>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3 }}
-          >
-            Add Address
-          </Button>
-        </Grid>
       </form>
     </Box>
   );
 };
 
-export default AddressForm;
+export default  SellerFormStep2;

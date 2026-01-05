@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CartItem from './CartItem'
 import { Close, Favorite, LocalOffer } from '@mui/icons-material'
 import { cyan } from '@mui/material/colors'
 import { Button, IconButton, TextField } from '@mui/material'
 import PricingCart from './PricingCart'
+import { useNavigate } from 'react-router-dom'
 
 const Cart = () => {
 
-  const [couponCode, setCouponCode] = React.useState('');
+  const [couponCode, setCouponCode] = useState('');
+
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setCouponCode(e.target.value)
   }
@@ -64,7 +67,7 @@ const Cart = () => {
             <PricingCart />
 
             <div className='p-5 '>
-              <Button variant='contained' sx={{ width: "100%" }} size='large'>
+              <Button onClick={()=>navigate('/checkout')} variant='contained' sx={{ width: "100%" }} size='large'>
                 Buy Now
               </Button>
             </div>

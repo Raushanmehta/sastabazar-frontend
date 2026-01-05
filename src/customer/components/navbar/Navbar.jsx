@@ -14,6 +14,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Storefront } from "@mui/icons-material";
 import CategorySheet from "./CategorySheet";
 import { mainCategory } from "../../../data/category/mainCategory";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const theme = useTheme();
@@ -21,6 +22,8 @@ const Navbar = () => {
   const [selectedCategory, setSelectedCategory] = useState("men");
   const [showCategorySheet, setShowCategorySheet] = useState(false);
   const isLoggedIn = true;
+
+  const navigate = useNavigate();
 
   return (
     <Box className="sticky top-0 left-0 right-0 z-50 text-gray-800 bg-white shadow-md"  sx={{ zIndex: 2 }}>
@@ -33,7 +36,7 @@ const Navbar = () => {
                 <MenuIcon />
               </IconButton>
             )}
-            <h1 className="cursor-pointer text-2xl font-semibold text-gray-800">
+            <h1 onClick={()=> navigate('/')} className="cursor-pointer text-2xl font-semibold text-gray-800">
               Sastabazar
             </h1>
           </div>
@@ -65,7 +68,9 @@ const Navbar = () => {
           </IconButton>
 
           {isLoggedIn ? (
-            <Button className="flex items-center gap-2 normal-case">
+            <Button
+            onClick={()=>navigate('/account/orders')}
+             className="flex items-center gap-2 normal-case">
               <Avatar
                 sx={{ width: 29, height: 29 }}
                 src="https://www.svgrepo.com/show/382096/female-avatar-girl-face-woman-user.svg"
@@ -84,12 +89,13 @@ const Navbar = () => {
             </IconButton>
           )}
 
-          <IconButton>
+          <IconButton onClick={()=>navigate('/cart')}>
             <ShoppingCartIcon sx={{ fontSize: 26, color: "gray" }} />
           </IconButton>
 
           {isLarge && (
             <Button
+            onClick={()=>navigate('/seller')}
               startIcon={<Storefront />}
               variant="outlined"
               className="normal-case"

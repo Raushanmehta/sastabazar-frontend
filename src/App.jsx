@@ -9,6 +9,8 @@ import Review from './customer/pages/review/review.jsx'
 import Cart from './customer/pages/cart/Cart.jsx'
 import Checkout from './customer/pages/checkout/Checkout.jsx'
 import Account from './customer/pages/account/Account.jsx'
+import { Route, Routes } from 'react-router-dom'
+import Seller from './seller/pages/Seller.jsx'
 
 function App() {
  
@@ -16,13 +18,17 @@ function App() {
     <ThemeProvider theme={customTheme}>
      <div>
      <Navbar />
-     {/* <Home/> */}
-     {/* <Product/> */}
-     {/* <ProductDetails/> */}
-     {/* <Review/> */}
-     {/* <Cart/> */}
-     {/* <Checkout/> */}
-     <Account/>
+     <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products/:category" element={<Product />} />
+        <Route path="/reviews/:productId" element={<Review />} />
+        <Route path="/product-details/:categoryId/:name/:productId" element={<ProductDetails />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/account/*" element={<Account />} />
+        <Route path="/seller" element={<Seller/>} />
+      </Routes>
+
      </div>
     </ThemeProvider>
 
