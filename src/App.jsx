@@ -10,7 +10,8 @@ import Cart from './customer/pages/cart/Cart.jsx'
 import Checkout from './customer/pages/checkout/Checkout.jsx'
 import Account from './customer/pages/account/Account.jsx'
 import { Route, Routes } from 'react-router-dom'
-import Seller from './seller/pages/Seller.jsx'
+import SellerDashboard from './seller/dashboard/SellerDashboard.jsx'
+
 
 function App() {
  
@@ -26,7 +27,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/account/*" element={<Account />} />
-        <Route path="/seller/*" element={<Seller/>} />
+        <Route path="/seller/*" element={<SellerDashboard/>} />
       </Routes>
 
      </div>
