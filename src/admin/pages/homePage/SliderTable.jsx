@@ -1,8 +1,11 @@
 import React from 'react'
+import HomeCategoryTable from './HomeCategoryTable'
 
 const SliderTable = () => {
   return (
-    <div>SliderTable</div>
+    <div>
+      <HomeCategoryTable />
+    </div>
   )
 }
 

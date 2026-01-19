@@ -7,20 +7,23 @@ import Account from '../admin/pages/account/Account'
 import AddCouponForm from '../admin/pages/coupon/AddCouponForm'
 import ElectronicTable from '../admin/pages/homePage/ElectronicTable'
 import ShopByCategoryTable from '../admin/pages/homePage/ShopByCategoryTable'
-import DealTable from '../admin/pages/homePage/DealTable'
 import SliderTable from '../admin/pages/homePage/SliderTable'
+import Dashboard from '../admin/pages/dashboard/Dashboard'
+import Deal from '../admin/pages/homePage/deal/Deal'
+
 
 const AdminRoutes = () => {
   return (
     <div>
         <Routes>
-            <Route path='/' element={<SellerTable/>} />
+            <Route path='/' element={<Dashboard/>} />
+            <Route path='/sellers' element={<SellerTable/>} />
             <Route path='/coupon' element={<Coupon/>} />
             <Route path='add-coupon' element={<AddCouponForm/>} />
             <Route path='home-slider' element={<SliderTable/>} />
             <Route path='electronics-category' element={<ElectronicTable/>} />
             <Route path='shop-by-category' element={<ShopByCategoryTable/>} />
-            <Route path='deals'element={<DealTable/>} />
+            <Route path='deals'element={<Deal/>} />
 
             <Route path='account' element={<Account/>} />
             <Route path='logout' element={'<Logout/>'} />
