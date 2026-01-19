@@ -1,8 +1,11 @@
 import React from 'react'
+import AddProductForm from './AddProductForm'
 
 const AddProducts = () => {
   return (
-    <div>AddProducts</div>
+    <>
+      <AddProductForm/>
+    </>
   )
 }
 

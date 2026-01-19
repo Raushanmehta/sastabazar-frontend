@@ -11,6 +11,7 @@ import Checkout from './customer/pages/checkout/Checkout.jsx'
 import Account from './customer/pages/account/Account.jsx'
 import { Route, Routes } from 'react-router-dom'
 import SellerDashboard from './seller/dashboard/SellerDashboard.jsx'
+import AdminDashboard from './admin/pages/dashboard/AdminDashboard.jsx'
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/account/*" element={<Account />} />
         <Route path="/seller/*" element={<SellerDashboard/>} />
+        <Route path="/admin/*" element={<AdminDashboard/>} />
       </Routes>
 
      </div>
