@@ -10,7 +10,8 @@ import TablePagination from "@mui/material/TablePagination";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import { Edit } from "@mui/icons-material";
-
+import { Link } from "react-router-dom";
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 /* ---------- STYLED ---------- */
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -58,61 +59,70 @@ const HomeCategoryTable = () => {
 
   return (
     <div className="w-full space-y-4">
-        <h1 className="text-2xl font-bold text-primary">All Categories</h1>
-    <Paper sx={{ height: "70vh", display: "flex", flexDirection: "column" }}>
-      <TableContainer 
-      sx={{
-    flex: 1,
-    overflow: "auto",
-    scrollbarWidth: "none",        
-    "&::-webkit-scrollbar": {      
-      display: "none",
-    },
-  }}>
-        <Table stickyHeader>
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>No</StyledTableCell>
-              <StyledTableCell>Id</StyledTableCell>
-              <StyledTableCell>Image</StyledTableCell>
-              <StyledTableCell align="right">Category</StyledTableCell>
-              <StyledTableCell align="right">Update</StyledTableCell>
-            </TableRow>
-          </TableHead>
+      <div className="flex items-center gap-2 text-sm mb-6">
+        <span className="text-base font-semibold text-black">Deals</span>
+        <ChevronRightIcon fontSize="small" />
+        <span><Link to="/admin" className="cursor-pointer">
+            Home
+          </Link></span>
+        <ChevronRightIcon fontSize="small" />
+        <span className="text-gray-400">Category</span>
+      </div>
+      <h1 className="text-xl font-semibold text-primary">All Category</h1>
+      <Paper sx={{ height: "70vh", display: "flex", flexDirection: "column" }}>
+        <TableContainer
+          sx={{
+            flex: 1,
+            overflow: "auto",
+            scrollbarWidth: "none",
+            "&::-webkit-scrollbar": {
+              display: "none",
+            },
+          }}>
+          <Table stickyHeader>
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>No</StyledTableCell>
+                <StyledTableCell>Id</StyledTableCell>
+                <StyledTableCell>Image</StyledTableCell>
+                <StyledTableCell align="right">Category</StyledTableCell>
+                <StyledTableCell align="right">Update</StyledTableCell>
+              </TableRow>
+            </TableHead>
 
-          <TableBody>
-            {paginatedRows.map((row) => (
-              <StyledTableRow key={row.id}>
-                <StyledTableCell>{row.number}</StyledTableCell>
-                <StyledTableCell>{row.id}</StyledTableCell>
-                <StyledTableCell>{row.image}</StyledTableCell>
-                <StyledTableCell align="right">
-                  {row.category}
-                </StyledTableCell>
-                <StyledTableCell align="right">
-                  <Button
-                    size="small"
-                    variant="outlined"
-                    startIcon={<Edit />}
-                  >
-                    Edit
-                  </Button>
-                </StyledTableCell>
-              </StyledTableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            <TableBody>
+              {paginatedRows.map((row) => (
+                <StyledTableRow key={row.id}>
+                  <StyledTableCell>{row.number}</StyledTableCell>
+                  <StyledTableCell>{row.id}</StyledTableCell>
+                  <StyledTableCell>{row.image}</StyledTableCell>
+                  <StyledTableCell align="right">
+                    {row.category}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    <Button
+                      size="small"
+                      variant="outlined"
+                      startIcon={<Edit />}
+                    >
+                      Edit
+                    </Button>
+                  </StyledTableCell>
+                </StyledTableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
 
-      <TablePagination
-        component="div"
-        count={rows.length}
-        page={page}
-        rowsPerPage={rowsPerPage}
-        rowsPerPageOptions={[10, 20, 30]}
-        onPageChange={(e, newPage) => setPage(newPage)}
-      />
-    </Paper>
+        <TablePagination
+          component="div"
+          count={rows.length}
+          page={page}
+          rowsPerPage={rowsPerPage}
+          rowsPerPageOptions={[10, 20, 30]}
+          onPageChange={(e, newPage) => setPage(newPage)}
+        />
+      </Paper>
     </div>
   );
 };

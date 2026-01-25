@@ -10,6 +10,9 @@ import TablePagination from "@mui/material/TablePagination";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import { Delete, Edit } from "@mui/icons-material";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { Link } from "react-router-dom";
+
 
 /* ---------- STYLED ---------- */
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -58,7 +61,18 @@ const DealTable = () => {
 
   return (
     <div className="w-full space-y-4">
-      <h1 className="text-2xl font-bold text-primary">Deals</h1>
+      <div className="flex items-center gap-2 text-sm mb-6">
+        <span className="text-base font-semibold text-black">Deals</span>
+        <ChevronRightIcon fontSize="small" />
+        <span>
+          <Link to="/admin" className="cursor-pointer">
+            Home
+          </Link>
+        </span>
+        <ChevronRightIcon fontSize="small" />
+        <span className="text-gray-400">Deals</span>
+      </div>
+      <h1 className="text-xl font-semibold text-primary">Deals</h1>
 
       <Paper sx={{ height: "70vh", display: "flex", flexDirection: "column" }}>
         <TableContainer

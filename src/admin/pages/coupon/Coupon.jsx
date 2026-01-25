@@ -13,8 +13,10 @@ import {
   InputLabel,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { tableCellClasses } from "@mui/material/TableCell";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 /* -------- STATUS OPTIONS -------- */
 const couponStatus = [
@@ -114,6 +116,13 @@ const Coupon = () => {
 
   return (
     <div className="w-full space-y-4">
+      <div className="flex items-center gap-2 text-sm mb-6">
+        <span className="text-base font-semibold text-black">Coupon</span>
+        <ChevronRightIcon  fontSize="small" />
+        <span><Link to="/admin">Home</Link></span>
+        <ChevronRightIcon fontSize="small" />
+        <span className="text-gray-400">Coupon</span>
+      </div>
       {/* STATUS FILTER */}
       <FormControl className="w-60">
         <InputLabel>Coupon Status</InputLabel>

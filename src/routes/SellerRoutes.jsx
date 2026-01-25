@@ -12,14 +12,13 @@ const SellerRoutes = () => {
   return (
     <>
         <Routes>
-            <Route path='/' element={<Dashboard/>} />
+            <Route path='/seller' element={<Dashboard/>} />
             <Route path='/products' element={<Products/>} />
             <Route path='/add-product' element={<AddProducts/>} />
             <Route path='/orders' element={<Orders/>} />
             <Route path='/payment' element={<Payment/>} />
             <Route path='/transaction' element={<Transaction/>} />
             <Route path='/account' element={<Profile/>} />
-
         </Routes>
     </>
   )

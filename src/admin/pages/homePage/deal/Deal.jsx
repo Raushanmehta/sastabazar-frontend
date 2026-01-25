@@ -4,6 +4,7 @@ import DealTable from "./DealTable";
 import CreateDealForm from "./CreateDealForm";
 import DealCategoryTable from "./DealCategoryTable";
 
+
 const tabs = ["Deals", "Category", "Create Deal"];
 
 const Deal = () => {
@@ -24,11 +25,13 @@ const Deal = () => {
       </div>
 
       <div className="mt-4">
-        {/* Content based on active tab */}
-        {activeDeal == "Deals" ? <DealTable /> : activeDeal == 'Category' ? <DealCategoryTable/> :<div>
-          <CreateDealForm/>
-        </div>}
-        
+        {activeDeal === "Deals" ? (
+          <DealTable />
+        ) : activeDeal === "Category" ? (
+          <DealCategoryTable />
+        ) : (
+          <CreateDealForm />
+        )}
       </div>
     </div>
   );

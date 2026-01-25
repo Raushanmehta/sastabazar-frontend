@@ -1,54 +1,91 @@
-import { Box, Button, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material'
-import { useFormik } from 'formik'
-import React from 'react'
+import {
+  Box,
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  Stack,
+  TextField,
+} from "@mui/material";
+import { useFormik } from "formik";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { Link } from "react-router-dom";
 
 const CreateDealForm = () => {
-    const formik = useFormik({
-        initialValues: {
-            discount: 0,
-            category: ''
-        },
-        onSubmit: (values) => {
-            console.log("Submit", values)
-        }
-    })
-    return (
-        <Box component={'form'} onSubmit={formik.handleSubmit} className='space-y-6'>
+  const formik = useFormik({
+    initialValues: {
+      discount: "",
+      category: "",
+    },
+    onSubmit: (values) => {
+      console.log("Submitted Values:", values);
+    },
+  });
 
-            <Typography variant='h4' className='text-center'>
-                Create Deal
-            </Typography>
+  return (
+    <div>
+      {/* Breadcrumb */}
+      <div className="flex items-center gap-2 text-sm mb-6">
+        <span className="text-base font-semibold text-black">Deals</span>
+        <ChevronRightIcon fontSize="small" />
+        <span>
+          <Link to="/admin" className="cursor-pointer">
+            Home
+          </Link>
+        </span>
+        <ChevronRightIcon fontSize="small" />
+        <span className="text-gray-400">Add Deals</span>
+      </div>
 
-            <TextField
-                fullWidth
-                name='discount'
-                label='Discount'
-                type='number'
-                onChange={formik.handleChange}
-                value={formik.values.discount}
-                error={formik.touched.discount && Boolean(formik.errors.discount)}
-                helperText={formik.touched.discount && formik.errors.discount}
-            />
+      {/* Page Title */}
+      <h1 className="text-xl font-semibold text-primary mb-6">
+        Create Deals
+      </h1>
 
-            <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Category</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={formik.values.category}
-                    label="Category"
-                    onChange={formik.handleChange}
-                >
-                    <MenuItem value={10}>Ten</MenuItem>
-                </Select>
-            </FormControl>
+      {/* Form */}
+      <Box component="form" onSubmit={formik.handleSubmit}>
+        <Stack spacing={3}>
+          {/* Discount */}
+          <TextField
+            fullWidth
+            name="discount"
+            label="Discount (%)"
+            type="number"
+            value={formik.values.discount}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
 
-            <Button variant='contained' fullWidth type='submit'>
-                Create Deal
-            </Button>
+          {/* Category */}
+          <FormControl fullWidth>
+            <InputLabel id="category-label">Category</InputLabel>
+            <Select
+              labelId="category-label"
+              id="category"
+              name="category"
+              value={formik.values.category}
+              label="Category"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value="electronics">Electronics</MenuItem>
+              <MenuItem value="fashion">Fashion</MenuItem>
+              <MenuItem value="grocery">Grocery</MenuItem>
+            </Select>
+          </FormControl>
 
-        </Box>
-    )
-}
+          {/* Submit Button */}
+          <Button variant="contained" fullWidth type="submit" sx={{ p: 2 }}>
+            Create Deal
+          </Button>
+        </Stack>
+      </Box>
+    </div>
+  );
+};
 
-export default CreateDealForm
+export default CreateDealForm;

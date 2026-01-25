@@ -1,0 +1,22 @@
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { api } from "../config/Api";
+
+
+export const sendLoginSignupOtp = createAsyncThunk(
+  "auth/sendLoginSignupOtp",
+  async ({email}, { rejectWithValue }) => {
+    try {
+      const response = await api.post("/auth/send/login-signup-otp",{email});
+      console.log("login otp", response.data);
+
+    } catch (error) {
+      console.error("erorr ---", error);
+
+      return rejectWithValue(
+        error.response?.data?.message || "Failed to send login otp"
+      );
+    }
+  }
+);
+
+// 1:02:20:35

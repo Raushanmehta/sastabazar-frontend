@@ -7,6 +7,8 @@ import {
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+
 
 const DrawerList = ({ menu, menu2, toggleDrawer }) => {
   const location = useLocation();
@@ -19,8 +21,9 @@ const DrawerList = ({ menu, menu2, toggleDrawer }) => {
 
   return (
     <div className="h-full">
-      <div className="flex flex-col justify-between h-full w-[300px] border-r border-gray-200 py-5">
-
+      <div className="flex flex-col justify-between h-full w-[300px] 
+      border-r border-gray-200 py-5">
+        
         {/* MAIN MENU */}
         <div className="space-y-2">
           {menu.map((item, index) => {
@@ -30,9 +33,8 @@ const DrawerList = ({ menu, menu2, toggleDrawer }) => {
               <div key={index} className="pr-9">
                 {/* Parent Item */}
                 <div
-                  className={`flex items-center py-3 px-4 rounded-r-full cursor-pointer ${
-                    isActive ? "bg-primary text-white" : "text-primary"
-                  }`}
+                  className={`flex items-center py-3 px-4 rounded-r-full cursor-pointer ${isActive ? "bg-primary text-white" : "text-primary"
+                    }`}
                   onClick={() =>
                     item.children
                       ? handleDropdown(index)
@@ -46,7 +48,7 @@ const DrawerList = ({ menu, menu2, toggleDrawer }) => {
                   <ListItemText primary={item.name} />
 
                   {item.children &&
-                    (openMenu === index ? <ExpandLess /> : <ExpandMore />)}
+                    (openMenu === index ? <ExpandMore /> : <ChevronRightIcon />)}
                 </div>
 
                 {/* Dropdown Items */}
@@ -56,11 +58,10 @@ const DrawerList = ({ menu, menu2, toggleDrawer }) => {
                       {item.children.map((child, i) => (
                         <div
                           key={i}
-                          className={`py-2 px-3 rounded-md cursor-pointer text-sm ${
-                            location.pathname === child.path
-                              ? "bg-primary text-white"
-                              : "text-primary hover:bg-gray-100"
-                          }`}
+                          className={`py-2 px-3 rounded-md cursor-pointer text-sm ${location.pathname === child.path
+                              ? "bg-primary text-white rounded-r-full"
+                              : "text-primary rounded-r-full hover:bg-gray-100"
+                            }`}
                           onClick={() => {
                             navigate(child.path);
                             toggleDrawer();
@@ -91,11 +92,10 @@ const DrawerList = ({ menu, menu2, toggleDrawer }) => {
               }}
             >
               <div
-                className={`flex items-center py-3 px-4 rounded-r-full ${
-                  item.path === location.pathname
+                className={`flex items-center py-3 px-4 rounded-r-full ${item.path === location.pathname
                     ? "bg-primary text-white"
                     : "text-primary"
-                }`}
+                  }`}
               >
                 <ListItemIcon>
                   {item.path === location.pathname
