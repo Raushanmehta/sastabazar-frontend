@@ -34,7 +34,7 @@ const SellerBanner = () => {
 
         <div className="mt-4 sm:mt-6">
           <Button
-            onClick={() => navigate('/seller')}
+            onClick={() => navigate('/seller/login')}
             variant="contained"
             color="primary"
             size="large"

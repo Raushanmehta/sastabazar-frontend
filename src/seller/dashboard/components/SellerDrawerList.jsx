@@ -14,7 +14,7 @@ import DrawerList from '../../../components/DrawerList';
 const menu = [
     {
         name: "Dashboard",
-        path: "/seller",
+        path: "/seller/dashboard",
         icon: <Dashboard className='text-primary' />,
         activeIcon: <DashboardIcon className='text-white' />
     },

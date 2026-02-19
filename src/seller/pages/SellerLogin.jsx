@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 
 import { Button } from '@mui/material';
 import SellerAccountForm from '../form/SellerAccountForm';
 import SellerLoginForm from '../form/SellerLoginForm';
 
-const Seller = () => {
+const SellerLogin = () => {
 
     const [isLogin, setIsLogin] = useState(false);
 
@@ -46,4 +46,4 @@ const Seller = () => {
   )
 }
 
-export default Seller
+export default SellerLogin

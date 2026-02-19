@@ -14,7 +14,6 @@ const Home = () => {
         <Deal/>
         <ShopByCategory/>
         <SellerBanner/>
-
     </div>
     </>
   )

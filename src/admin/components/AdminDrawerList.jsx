@@ -7,13 +7,10 @@ import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
 
 
-
-
-
 const menu = [
   {
     name: 'Dashboard',
-    path: '/admin',
+    path: '/admin/dashboard',
     icon: <Dashboard className='text-primary' />,
     activeIcon: <DashboardIcon className='text-white' />
   },

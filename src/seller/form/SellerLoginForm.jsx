@@ -2,8 +2,8 @@ import { Button, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import { useState } from "react";
 import { MuiOtpInput } from "mui-one-time-password-input";
-import { useAppDispatch } from "../../state/Store";
 import { sendLoginSignupOtp } from "../../state/authSlice";
+import { useAppDispatch } from "../../state/Store";
 
 const SellerLoginForm = () => {
   const dispatch = useAppDispatch();
@@ -16,7 +16,7 @@ const SellerLoginForm = () => {
     },
     onSubmit: (values) => {
       console.log("Login data:", values);
-      // dispatch(loginSeller(values))
+      dispatch(loginSeller(values))
     },
   });
 
@@ -24,7 +24,7 @@ const SellerLoginForm = () => {
     if (!formik.values.email) {
       formik.setFieldError("email", "Email is required");
       return;
-    }
+    } 
 
     dispatch(sendLoginSignupOtp({ email: formik.values.email }));
     setOtpSent(true);
