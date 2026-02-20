@@ -3,7 +3,8 @@ import { useFormik } from "formik";
 import { useState } from "react";
 import { MuiOtpInput } from "mui-one-time-password-input";
 import { sendLoginSignupOtp } from "../../state/authSlice";
-import { useAppDispatch } from "../../state/Store";
+import { useAppDispatch } from "../../state/store";
+import { sellerLogin } from "../../state/seller/sellerAuthSlice";
 
 const SellerLoginForm = () => {
   const dispatch = useAppDispatch();
@@ -16,7 +17,7 @@ const SellerLoginForm = () => {
     },
     onSubmit: (values) => {
       console.log("Login data:", values);
-      dispatch(loginSeller(values))
+      dispatch(sellerLogin({ email: values.email, otp: values.otp }));
     },
   });
 
@@ -28,6 +29,10 @@ const SellerLoginForm = () => {
 
     dispatch(sendLoginSignupOtp({ email: formik.values.email }));
     setOtpSent(true);
+  };
+
+  const handleLogin = () => {
+    dispatch(sendLoginSignupOtp({ email: formik.values.email }));
   };
 
   return (
@@ -80,6 +85,7 @@ const SellerLoginForm = () => {
         </Button>
 
         <Button
+          onClick={formik.handleSubmit}
           type="submit"
           variant="contained"
           fullWidth

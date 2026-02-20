@@ -19,4 +19,20 @@ export const sendLoginSignupOtp = createAsyncThunk(
   }
 );
 
+
+export const signin = createAsyncThunk("/auth/signin",
+  async(loginRequest, { rejectWithValue }) => {
+    try {
+      const response = await api.post("/auth/signin", loginRequest);
+      console.log("login otp", response.data);
+    
+    } catch (error) {
+      console.error("erorr ---", error);
+
+      return rejectWithValue(
+        error.response?.data?.message || "Failed to send login otp"
+      );
+    }
+  }
+)
 // 1:02:20:35

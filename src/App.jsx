@@ -35,12 +35,17 @@ import ElectronicTable from './admin/pages/homePage/ElectronicTable.jsx';
 import ShopByCategoryTable from './admin/pages/homePage/ShopByCategoryTable.jsx';
 import Deal from './admin/pages/homePage/deal/Deal.jsx';
 import Accounts from './admin/pages/account/Account.jsx';
+import { useAppDispatch } from './state/store.js';
+import { fetchSellerProfile } from './state/seller/sellerSlice.js';
 
 
 
 function App() {
+
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
-    fetchProduct();
+    dispatch(fetchSellerProfile(localStorage.getItem("jwt") || ""));
   }, []);
 
   return (
@@ -81,7 +86,6 @@ function App() {
             <Route path='/admin/electronics-category/*' element={<ElectronicTable/>} />
             <Route path='/admin/shop-by-category/*' element={<ShopByCategoryTable/>} />
             <Route path='/admin/deals/*'element={<Deal/>} />
-
             <Route path='/admin/account/*' element={<Accounts/>} />
             <Route path='/admin/logout/*' element={'<Logout/>'} />
         </Route>
